@@ -69,14 +69,16 @@ def inject_css() -> None:
             justify-content: space-between;
             gap: 1rem;
             border-bottom: 1px solid var(--line);
-            padding-bottom: 1rem;
-            margin-bottom: .3rem;
+            padding: .15rem 0 .85rem;
+            margin-bottom: .45rem;
+            min-height: 64px;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: .75rem;
+            min-width: 0;
         }
 
         .brand-mark {
@@ -101,6 +103,7 @@ def inject_css() -> None:
             font-weight: 850;
             line-height: 1.1;
             color: var(--ink);
+            white-space: nowrap;
         }
 
         .status-pill {
@@ -114,6 +117,7 @@ def inject_css() -> None:
             color: var(--muted);
             font-size: .88rem;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .dot {
@@ -322,8 +326,9 @@ def inject_css() -> None:
             .topbar {
                 flex-direction: column;
                 align-items: flex-start;
-                padding-top: 1.8rem;
-                gap: .75rem;
+                padding-top: 1.55rem;
+                gap: .7rem;
+                min-height: auto;
             }
 
             .status-pill {
