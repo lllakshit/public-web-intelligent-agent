@@ -268,8 +268,28 @@ def inject_css() -> None:
             box-shadow: none !important;
         }
 
-        [data-testid="stSidebar"] [data-baseweb="select"] * {
+        [data-testid="stSidebar"] [data-baseweb="select"] *,
+        [data-testid="stSidebar"] [data-baseweb="select"] div,
+        [data-testid="stSidebar"] [data-baseweb="select"] span,
+        [data-testid="stSidebar"] [data-baseweb="select"] input {
+            background: #fff !important;
             color: var(--ink) !important;
+            -webkit-text-fill-color: var(--ink) !important;
+        }
+
+        [data-testid="stSidebar"] [data-baseweb="select"] input::placeholder {
+            color: #7a879f !important;
+            -webkit-text-fill-color: #7a879f !important;
+        }
+
+        [data-testid="stSidebar"] [data-baseweb="select"] svg {
+            fill: #7a879f !important;
+        }
+
+        [data-testid="stSidebar"] [data-baseweb="select"]:focus-within,
+        [data-testid="stSidebar"] [data-baseweb="select"] [role="combobox"]:focus-within {
+            border-color: #c8d7ff !important;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, .08) !important;
         }
 
         [data-baseweb="tag"] {
