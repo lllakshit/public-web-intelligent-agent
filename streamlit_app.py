@@ -199,6 +199,17 @@ def inject_css() -> None:
             line-height: 1.5;
         }
 
+        .query-list {
+            margin: .35rem 0 0;
+            padding-left: 1.1rem;
+            color: var(--ink);
+        }
+
+        .query-list li {
+            margin: .55rem 0;
+            line-height: 1.5;
+        }
+
         .blocked {
             border-left: 4px solid var(--warn);
             background: #fff8ed;
@@ -250,10 +261,22 @@ def inject_css() -> None:
             background: #fff !important;
         }
 
+        [data-testid="stSidebar"] [data-baseweb="select"] {
+            background: #fff !important;
+            border: 1px solid var(--line) !important;
+            border-radius: 8px !important;
+            box-shadow: none !important;
+        }
+
+        [data-testid="stSidebar"] [data-baseweb="select"] * {
+            color: var(--ink) !important;
+        }
+
         [data-baseweb="tag"] {
-            background: var(--blue-soft) !important;
+            background: #f3f7ff !important;
             color: var(--blue-strong) !important;
             border-radius: 999px !important;
+            border: 1px solid #d7e3ff !important;
         }
 
         [data-baseweb="tag"] span,
@@ -361,7 +384,7 @@ def render_recent_reports() -> None:
             f"""
             <div class="report-card">
                 <div class="report-title">{escape(report.query)}</div>
-                <div class="report-meta">{escape(report.intent)} · {report.result_count} results · {report.warning_count} warnings</div>
+                <div class="report-meta">{escape(report.intent)} - {report.result_count} results - {report.warning_count} warnings</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -383,7 +406,7 @@ def render_active_report() -> None:
         st.caption("Open a saved report to view it here.")
         return
     st.markdown(f"### {report.query}")
-    st.caption(f"{report.intent} · {report.result_count} results · {report.created_at}")
+    st.caption(f"{report.intent} - {report.result_count} results - {report.created_at}")
     st.markdown(report.markdown_content)
 
 
@@ -477,12 +500,16 @@ with side_col:
         st.subheader("Good test queries")
         st.markdown(
             """
-            - `find remote AI product manager roles in India from YC companies`
-            - `latest Y Combinator healthcare startup funding updates`
-            - `public discussion of Cursor AI pricing changes reddit`
-            - `GitHub Actions release updates breaking changes`
-            - `who is Andrej Karpathy public profile talks projects`
+            <ul class="query-list">
+                <li>find remote AI product manager roles in India from YC companies</li>
+                <li>latest Y Combinator healthcare startup funding updates</li>
+                <li>public discussion of Cursor AI pricing changes reddit</li>
+                <li>GitHub Actions release updates breaking changes</li>
+                <li>who is Andrej Karpathy public profile talks projects</li>
+            </ul>
             """
+            ,
+            unsafe_allow_html=True,
         )
 
     with st.container(border=True):
